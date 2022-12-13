@@ -1,0 +1,57 @@
+<div class="box">
+    <div [ngClass]="{'blur-bg':isDeleteClicked}" class="container-sm">
+        <h1>StudentsDetails</h1>
+        <div class="table-title tt">
+            <div class="input-group mg-1-0">
+                <input id="searchField" type="search" class="form-control rounded" style="margin: 5px;" placeholder="Search" aria-label="Search" aria-describedby="search-addon" autocomplete="off" />
+                <button type="button" (click)="onSearchClicked()" class="btn btn-outline-primary"><i class="material-icons">search</i></button>
+                </div>
+                <div class="input-group">
+                    <button type="button" class="btn btn-primary" (click)="onAddClick()"><i class="material-icon" title="Add">&#xE147;add</i></button>
+                    <button type="button" class="btn btn-success" (click)="onUpdateClick()"><i class="material-icon" title="Update">update</i></button>
+                    <button type="button" class="btn btn-danger" (click)="onDeleteClick()"><i class="material-icon" title="Delete">delete</i></button>
+                </div>
+            </div>
+            <table class="table ta">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Division</th>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Grade description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-data [ngForOf]="studentDatails" let-rowIndex="index" [ngForTrackBy]="trackByFn">
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" (change)="onRecordChecked($event,data)" name="studentList" id={{data.ID}}>
+                                    <label class="custom-control-lable" for={{data.ID}}>{{data.ID}}</label>
+                                </div>
+                            </td>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.Class}}</td>
+                            <td>{{data.Division}}</td>
+                            <td>{{data.Grade}}</td>
+                            <td>{{data.description}}</td>
+                            <td><button type="button" class="btn btn-success" (click)="onUpdateClick()"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE147;</i></button>
+                                <button type="button" class="btn btn-danger" (click)="onDeleteClick()"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button></td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="isDeleteClicked" style="position:absolute; top:40%; left:40%; padding:10px 30px; background-color:grey; width:30px;"></div>
+        <div style="padding:15px 10px; color:white;">Are you sure you want to delete these record having IDs {{idsToDelete}}</div>
+        <button style="margin: 0px 5px;" type="button" class="btn btn-primary" (click)="onConfirmClicked()">
+        Confirm</button>
+        <button style="float:right;margin:0px 5px;" type="button" class="btn btn-success" (click)="onCancelClicked()">cancel
+            </button>
+
+    </div>
+    
+
