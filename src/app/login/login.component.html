@@ -1,0 +1,60 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                        <span class="h1 fw-bold mb-0">Student</span>
+                    </div>
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">sign into your account</h5>
+                    <div class="mb-3">
+                        <label for="examplexInputPassword1">Email</label>
+                        <input [ngClass]="{'is-invalid' :formValue['email'].errors && validate}"
+                        type="text" formControlName="email" class="form-control" id="email"
+                        placeholder="Please enter email" required>
+                        <div class="invalid-feedback" *ngIf="formValue['email'].errors && validate">
+                        <div *ngIf="formValue['email'].errors['required']">Enter the email</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="examplexInputPassword1">Password</label>
+                        <input [ngClass]="{'is-invalid' :formValue['Password'].errors && validate}"
+                        type="password" formControlName="password" class="form-control" id="password"
+                        placeholder="Please enter password" required>
+                        <div class="invalid-feedback" *ngIf="formValue['password'].errors && validate">
+                        <div *ngIf="formValue['password'].errors['required']">Enter the Password</div>
+                    </div>
+                    </div>
+                    <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
+                    <button type="submit" class="btn btn-primary" (click)="onLogin()">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-xl-5 bg-primary">
+        <div class="text-white mb-3 mb-md-0">
+            Copyright @ 2022. All right reserved.
+        </div>
+        <div>
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+</section>
